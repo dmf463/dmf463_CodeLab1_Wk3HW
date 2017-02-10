@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class TrashBinScript : MonoBehaviour {
 
+    public GameManagerScript gameManagerScript;
+
 	// Use this for initialization
 	void Start () {
 		
@@ -15,6 +17,8 @@ public class TrashBinScript : MonoBehaviour {
         if (other.gameObject.tag == "Trash")
         {
             Destroy(other.gameObject);
+            gameManagerScript.Score += 1;
+
         }
     }
 	
