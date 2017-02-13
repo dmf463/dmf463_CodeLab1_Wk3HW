@@ -23,17 +23,20 @@ public class GameManagerScript : MonoBehaviour {
 
     public Text scoreAmount;
     public static GameManagerScript instance;
+    public static List<GameObject> trashballs;
 
 	// Use this for initialization
 	void Start () {
 
         if (instance == null)
         {
+            trashballs = new List<GameObject>();
             instance = this;
             DontDestroyOnLoad(this);
         }
         else
         {
+
             instance.scoreAmount = GameObject.Find("Score").GetComponent<Text>();
             Destroy(gameObject);
         }
@@ -43,6 +46,36 @@ public class GameManagerScript : MonoBehaviour {
 	void Update () {
 
         scoreAmount.text = "" + GameManagerScript.instance.Score;
-		
-	}
+
+    }
+
+    public void findTrashPosition(int arrayNumber)
+    {
+        GameObject[] trash = GameObject.FindGameObjectsWithTag("Trash");
+        trash[arrayNumber].transform.position = new Vector3(trash[arrayNumber].transform.position.x, trash[arrayNumber].transform.position.y, trash[arrayNumber].transform.position.z);
+        Debug.Log(trash + "" + trash[arrayNumber].name);
+        trashballs.Add(trash[arrayNumber]);
+    }
+
+    public void warpNow()
+    {
+        findTrashPosition(0);
+        findTrashPosition(1);
+        findTrashPosition(2);
+        findTrashPosition(3);
+        findTrashPosition(4);
+        findTrashPosition(5);
+
+        Scene currentScene = SceneManager.GetActiveScene();
+
+        if (currentScene.name == "Scene1")
+        {
+            SceneManager.LoadScene("AlternateDimension");
+        }
+        if (currentScene.name == "AlternateDimension")
+        {
+            SceneManager.LoadScene("Scene1");
+        }
+
+    }
 }

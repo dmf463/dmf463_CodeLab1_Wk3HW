@@ -16,14 +16,7 @@ public class WarpZoneScript : MonoBehaviour {
 
         if (other.gameObject.tag == "Player")
         {
-            if (currentScene.name == "Scene1")
-            {
-                SceneManager.LoadScene("AlternateDimension");
-            }
-            if (currentScene.name == "AlternateDimension")
-            {
-                SceneManager.LoadScene("Scene1");
-            }
+            GameManagerScript.instance.warpNow();
         }
         
     }
