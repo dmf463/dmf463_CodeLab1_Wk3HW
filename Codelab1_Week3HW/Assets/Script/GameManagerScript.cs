@@ -21,7 +21,7 @@ public class GameManagerScript : MonoBehaviour {
         }
     }
 
-    Text scoreAmount;
+    public Text scoreAmount;
     public static GameManagerScript instance;
 
 	// Use this for initialization
@@ -34,10 +34,9 @@ public class GameManagerScript : MonoBehaviour {
         }
         else
         {
+            instance.scoreAmount = GameObject.Find("Score").GetComponent<Text>();
             Destroy(gameObject);
         }
-
-        scoreAmount = GameObject.Find("Score").GetComponent<Text>();	
 	}
 	
 	// Update is called once per frame
