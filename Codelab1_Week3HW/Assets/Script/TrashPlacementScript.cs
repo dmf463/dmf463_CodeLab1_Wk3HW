@@ -9,15 +9,7 @@ public class TrashPlacementScript : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 
-        if (instance == null)
-        {
-            instance = this;
-            DontDestroyOnLoad(this);
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
+        DontDestroyOnLoad(this);
 
     }
 	
