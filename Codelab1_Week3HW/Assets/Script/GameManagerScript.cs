@@ -23,7 +23,8 @@ public class GameManagerScript : MonoBehaviour {
 
     public Text scoreAmount;
     public static GameManagerScript instance;
-    public static List<GameObject> trashballs;
+    public List<GameObject> trashballs;
+    public GameObject prefab;
 
 	// Use this for initialization
 	void Start () {
@@ -36,7 +37,10 @@ public class GameManagerScript : MonoBehaviour {
         }
         else
         {
-
+            prefab = GameObject.Find("Trash");
+            GameObject newTrash1 = Instantiate(prefab, trashballs[0].GetComponent<Transform>().position, Quaternion.identity);
+            GameObject newTrash2 = Instantiate(prefab, trashballs[1].GetComponent<Transform>().position, Quaternion.identity);
+            GameObject newTrash3 = Instantiate(prefab, trashballs[2].GetComponent<Transform>().position, Quaternion.identity);
             instance.scoreAmount = GameObject.Find("Score").GetComponent<Text>();
             Destroy(gameObject);
         }
@@ -62,9 +66,6 @@ public class GameManagerScript : MonoBehaviour {
         findTrashPosition(0);
         findTrashPosition(1);
         findTrashPosition(2);
-        findTrashPosition(3);
-        findTrashPosition(4);
-        findTrashPosition(5);
 
         Scene currentScene = SceneManager.GetActiveScene();
 
