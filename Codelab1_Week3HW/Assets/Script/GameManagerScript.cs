@@ -37,10 +37,6 @@ public class GameManagerScript : MonoBehaviour {
             GameObject newTrash1 = Instantiate(prefab, spawnpoints[0].GetComponent<Transform>().position, Quaternion.identity);
             GameObject newTrash2 = Instantiate(prefab, spawnpoints[1].GetComponent<Transform>().position, Quaternion.identity);
             GameObject newTrash3 = Instantiate(prefab, spawnpoints[2].GetComponent<Transform>().position, Quaternion.identity);
-            GameObject newTrash4 = Instantiate(prefab, spawnpoints[3].GetComponent<Transform>().position, Quaternion.identity);
-            GameObject newTrash5 = Instantiate(prefab, spawnpoints[4].GetComponent<Transform>().position, Quaternion.identity);
-            GameObject newTrash6 = Instantiate(prefab, spawnpoints[5].GetComponent<Transform>().position, Quaternion.identity);
-            GameObject newTrash7 = Instantiate(prefab, spawnpoints[6].GetComponent<Transform>().position, Quaternion.identity);
             trashballs = new List<GameObject>();
             instance = this;
             DontDestroyOnLoad(this);
@@ -56,7 +52,21 @@ public class GameManagerScript : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
+        Scene currentScene = SceneManager.GetActiveScene();
+
         scoreAmount.text = "" + GameManagerScript.instance.Score;
+
+        if (spawnpoints.Length == 0)
+        {
+            if(currentScene.name == "Scene 1")
+            {
+                Debug.Log("WORLD WAR 3");
+            }
+            else if (currentScene.name == "AlternateDimenson")
+            {
+                Debug.Log("WORLD PEACE");
+            }
+        }
 
     }
 
